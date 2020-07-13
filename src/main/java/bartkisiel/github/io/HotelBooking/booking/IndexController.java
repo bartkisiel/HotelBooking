@@ -1,4 +1,4 @@
-package bartkisiel.github.io.HotelBooking;
+package bartkisiel.github.io.HotelBooking.booking;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +11,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String getSearchPage() {
-        return "booking/search";
+        return "/booking/search";
     }
 
     @GetMapping("/greeting")

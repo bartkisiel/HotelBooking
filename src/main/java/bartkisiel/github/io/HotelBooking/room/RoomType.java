@@ -1,4 +1,5 @@
 package bartkisiel.github.io.HotelBooking.room;
 
-public class RoomType {
+public enum RoomType {
+    Penthouse, Balcony, Studio, Standard, Apartament, Loft
 }

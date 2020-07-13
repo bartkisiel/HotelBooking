@@ -1,0 +1,12 @@
+spring:
+  thymeleaf:
+    cache: false
+  h2:
+    console:
+      enabled: true
+      path: /console
+  flyway:
+    baselineOnMigrate: false
+    check-location: false
+  datasource:
+    url: 'jdbc:h2:file:/Users/bartlomiejkisiel/Desktop/Java/Hotel Booking App/Hotel Booking/database'

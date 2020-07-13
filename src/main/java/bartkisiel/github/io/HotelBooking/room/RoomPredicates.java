@@ -1,4 +1,4 @@
-package bartkisiel.github.io.HotelBooking.persistance.predicates;
+package bartkisiel.github.io.HotelBooking.room;
 import bartkisiel.github.io.HotelBooking.room.QRoom;
 import com.querydsl.core.types.Predicate;
 

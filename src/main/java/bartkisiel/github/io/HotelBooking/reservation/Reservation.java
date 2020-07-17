@@ -14,10 +14,12 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 @Entity
+@Table(name = "reservations")
 public class Reservation {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name = "uuid")
     private UUID reservationId = UUID.randomUUID();
     @OneToOne(mappedBy = "reservation")
     private Room room;
@@ -41,7 +43,7 @@ public class Reservation {
     @OneToMany(cascade = CascadeType.ALL)
     private List<MealPlan> mealPlanList = new ArrayList<>();
     @OneToOne(cascade = CascadeType.ALL)
-    private SuccessfulPayment successfullPayment;
+    private SuccessfulPayment successfulPayment;
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
@@ -114,12 +116,12 @@ public class Reservation {
     }
 
     public SuccessfulPayment getSuccessfullPayment() {
-        return successfullPayment;
+        return successfulPayment;
     }
 
     public void setSuccessfullPayment(SuccessfulPayment successfullPayment) {
         createdAt = LocalDateTime.now();
-        this.successfullPayment = successfullPayment;
+        this.successfulPayment = successfullPayment;
     }
 
     public void setCreatedAt(LocalDateTime createdAt) {

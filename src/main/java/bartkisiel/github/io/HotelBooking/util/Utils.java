@@ -1,5 +1,8 @@
 package bartkisiel.github.io.HotelBooking.util;
 
+import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy;
+import org.springframework.context.annotation.Bean;
+
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.function.Function;
@@ -21,5 +24,13 @@ public class Utils {
         return Arrays.stream(str.split("\\s"))
                 .map(Utils::capitalize)
                 .collect(Collectors.joining(" "));
+    }
+
+    @Bean
+    public FlywayMigrationStrategy cleanMigrateStrategy() {
+        return flyway -> {
+            flyway.repair();
+            flyway.migrate();
+        };
     }
 }

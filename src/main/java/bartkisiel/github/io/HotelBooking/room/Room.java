@@ -9,16 +9,17 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Table(name = "rooms")
 public class Room {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @ManyToOne
     private Hotel hotel;
     @NaturalId //DO NOT provide setter method on field with @NaturalId.
     @Column(nullable = false, unique = true)
     private String roomNumber;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "room_type")
     @Enumerated(EnumType.STRING)
     private RoomType roomtype;
     @Column(nullable = false)

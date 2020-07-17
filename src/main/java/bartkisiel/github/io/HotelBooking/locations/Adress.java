@@ -8,9 +8,10 @@ import java.util.Objects;
 @Embeddable
 public class Adress {
     private String name;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "street_adress_1")
     @NotBlank(message = "Street adress must not be empty!")
     private String streetAdress1;
+    @Column(name = "street_adress_2")
     private String streetAdress2;
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -19,6 +20,7 @@ public class Adress {
     private String city;
     @Column(nullable = false)
     @Embedded
+    @Valid
     private Postcode postcode;
 
     public Adress(String name, String streetAdress1, String streetAdress2, Country country, String city, Postcode postcode) {

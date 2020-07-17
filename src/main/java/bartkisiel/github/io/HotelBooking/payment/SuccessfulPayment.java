@@ -1,14 +1,21 @@
 package bartkisiel.github.io.HotelBooking.payment;
 
+import bartkisiel.github.io.HotelBooking.util.YearMonthDateType;
+import org.hibernate.annotations.TypeDef;
+
 import javax.persistence.*;
 import java.time.YearMonth;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@TypeDef(
+        typeClass = YearMonthDateType.class,
+        defaultForType = YearMonth.class
+)
 public class SuccessfulPayment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
     private UUID transactionId = UUID.randomUUID();
@@ -19,7 +26,7 @@ public class SuccessfulPayment {
     private String lastFourNumbersOfCreditCard;
     @Column(nullable = false)
     private String cvvNumber;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "date")
     private YearMonth cardExpirationDate;
 
     /*

@@ -12,10 +12,11 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(name = "meal_plans")
 public class MealPlan implements Serializable {
     public static final double UNDERAGE_DISCOUNT = 0.50;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private UUID mealPlanId = UUID.randomUUID();
     @OneToOne
@@ -33,11 +34,10 @@ public class MealPlan implements Serializable {
     public MealPlan() {
     }
 
-    //Todo: change this.foodExtras to setter.
     public MealPlan(Guest guest, Reservation reservation, List<Extra> foodExtras, List<DietPreference> dietPreferenceList) {
         this.guest = guest;
         this.reservation = reservation;
-        this.foodExtras = foodExtras;
+        setFoodExtras(foodExtras);
         this.dietPreferenceList = dietPreferenceList;
     }
 

@@ -5,15 +5,16 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Table(name = "extras")
 public class Extra {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @Column(nullable = false)
     private String description;
     @Column(nullable = false)
     private BigDecimal perDayPrice;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "type")
     @Enumerated(EnumType.STRING)
     private Type type;
     @Column(nullable = false)

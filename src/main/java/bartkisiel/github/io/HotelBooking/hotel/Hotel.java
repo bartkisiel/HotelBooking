@@ -14,17 +14,20 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table(name = "hotels")
 public class Hotel implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "hotel_id")
     private Long id;
     @Column(nullable = false, name = "hotel_name")
     private String name;
     @Column(nullable = false)
+    @Embedded
     private Adress address;
     @Column(nullable = false)
     private int stars;
-    @Column(nullable = false)
+    @Column(nullable = false, name = "email")
     private String emailAdress;
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     @JsonIgnore

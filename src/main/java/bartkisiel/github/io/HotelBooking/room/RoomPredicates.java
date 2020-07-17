@@ -10,7 +10,7 @@ public final class RoomPredicates {
 
     }
 
-    public static Predicate availableRoom(int hotelId) {
+    public static Predicate availableRoom(long hotelId) {
         return room.hotel.id.eq(hotelId).and(room.reservation.isNull());
     }
 }

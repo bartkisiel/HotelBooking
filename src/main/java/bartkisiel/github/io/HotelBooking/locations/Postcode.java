@@ -7,9 +7,9 @@ import javax.validation.constraints.Pattern;
 import java.util.Objects;
 
 @Embeddable
-public class Postcode {
-    @Column(nullable = false)
-    @Pattern(regexp = "[0-9]{4}", message = "Postcode must contain four digits!")
+public class    Postcode {
+    @Column(nullable = false, name = "postcode")
+    @Pattern(regexp = "[0-9]{5}", message = "Postcode must contain five digits!")
     @NotBlank(message = "Postcode must not be empty!")
     private String code;
 

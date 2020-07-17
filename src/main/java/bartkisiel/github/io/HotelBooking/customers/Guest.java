@@ -9,11 +9,12 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
+@Table(name = "guests")
 public class Guest {
     @Transient
     private UUID tempId = UUID.randomUUID();
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     @NotBlank(message = "First name required.")
     @Column(nullable = false)

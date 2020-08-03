@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 
 @Embeddable
-public class Adress {
+public class Address {
     private String name;
     @Column(nullable = false, name = "street_adress_1")
     @NotBlank(message = "Street adress must not be empty!")
@@ -23,7 +23,7 @@ public class Adress {
     @Valid
     private Postcode postcode;
 
-    public Adress(String name, String streetAdress1, String streetAdress2, Country country, String city, Postcode postcode) {
+    public Address(String name, String streetAdress1, String streetAdress2, Country country, String city, Postcode postcode) {
         this.name = name;
         this.streetAdress1 = streetAdress1;
         this.streetAdress2 = streetAdress2;
@@ -35,7 +35,7 @@ public class Adress {
     /*
      * empty constructor for Hibernate.
      */
-    public Adress() {
+    public Address() {
     }
 
     public String getName() {

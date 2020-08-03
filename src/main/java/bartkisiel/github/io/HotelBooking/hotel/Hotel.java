@@ -1,7 +1,7 @@
 package bartkisiel.github.io.HotelBooking.hotel;
 
 
-import bartkisiel.github.io.HotelBooking.locations.Adress;
+import bartkisiel.github.io.HotelBooking.locations.Address;
 import bartkisiel.github.io.HotelBooking.room.Room;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -24,11 +24,11 @@ public class Hotel implements Serializable {
     private String name;
     @Column(nullable = false)
     @Embedded
-    private Adress address;
+    private Address address;
     @Column(nullable = false)
     private int stars;
     @Column(nullable = false, name = "email")
-    private String emailAdress;
+    private String emailAddress;
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Room> roomSet;
@@ -49,7 +49,7 @@ public class Hotel implements Serializable {
     private final static LocalTime DEFAULT_LATEST_POSSIBLE_CHECKOUT = LocalTime.of(21,59);
     private final static BigDecimal DEFAULT_CHECKOUT_FEE = BigDecimal.valueOf(0.0);
 
-    public Hotel(String name, Adress adress, int stars, String emailAdress) {
+    public Hotel(String name, Address adress, int stars, String emailAdress) {
         this(name, adress, stars, emailAdress,
                 DEFAULT_EARLIEST_POSSIBLE_CHECKIN,
                 DEFAULT_LATEST_POSSIBLE_CHECKIN,
@@ -58,16 +58,16 @@ public class Hotel implements Serializable {
                 DEFAULT_CHECKOUT_FEE);
     }
 
-    public Hotel(String name, Adress adress, int stars, String emailAdress,
+    public Hotel(String name, Address address, int stars, String emailAddress,
                  LocalTime earliestPossibleCheckIn,
                  LocalTime latestPossibleCheckIn,
                  LocalTime possibleCheckOut,
                  LocalTime latestPossibleCheckOut,
                  BigDecimal checkOutFee) {
         this.name = name;
-        this.address = adress;
+        this.address = address;
         this.stars = stars;
-        this.emailAdress = emailAdress;
+        this.emailAddress = emailAddress;
         this.roomSet = new HashSet<>();
         this.earliestPossibleCheckIn = earliestPossibleCheckIn;
         this.latestPossibleCheckIn = latestPossibleCheckIn;
@@ -102,11 +102,11 @@ public class Hotel implements Serializable {
     public void setName(String name) { this.name = name;
     }
 
-    public Adress getAdress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAdress(Adress adress) {
+    public void setAddress(Address adress) {
         this.address = adress;
     }
 
@@ -118,12 +118,12 @@ public class Hotel implements Serializable {
         this.stars = stars;
     }
 
-    public String getEmailAdress() {
-        return emailAdress;
+    public String getEmailAddress() {
+        return emailAddress;
     }
 
-    public void setEmailAdress(String emailAdress) {
-        this.emailAdress = emailAdress;
+    public void setEmailAdress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public Set<Room> getRoomSet() {
@@ -202,12 +202,12 @@ public class Hotel implements Serializable {
         if (object == null || getClass() != object.getClass()) return false;
         Hotel hotel = (Hotel) object;
         return Objects.equals(address, hotel.address) &&
-                Objects.equals(emailAdress, hotel.emailAdress);
+                Objects.equals(emailAddress, hotel.emailAddress);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, address,emailAdress);
+        return Objects.hash(name, address,emailAddress);
     }
 
     @Override
@@ -216,7 +216,7 @@ public class Hotel implements Serializable {
                 "id=" + id +
                 ", adress=" + address +
                 ", stars=" + stars +
-                ", emailAdress='" + emailAdress + '\'' +
+                ", emailAdress='" + emailAddress + '\'' +
                 '}';
     }
 }

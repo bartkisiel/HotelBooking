@@ -23,5 +23,5 @@ public interface HotelRepository extends PagingAndSortingRepository<Hotel, Long>
                                   @Param("postcode") String postcode,
                                   Pageable pageable);
 
-    List<Hotel> findAll();
+    Page<Hotel> findAll(Pageable pageable);
 }

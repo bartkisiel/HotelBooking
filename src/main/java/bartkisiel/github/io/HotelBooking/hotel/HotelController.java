@@ -18,7 +18,7 @@ public class HotelController {
     public String showHotels(Pageable pageable, Model model) {
         Page<Hotel> result = repository.findAll(pageable);
         model.addAttribute("hotels", result);
-        return "/booking/hotels";
+        return "/hotel/hotels";
     }
 
 }

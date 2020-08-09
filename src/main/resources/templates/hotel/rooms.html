@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{core-layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Hotel Booking</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="ui breadcrumb">
+        <a class="section" href="#" onclick="history.go(-1)" th:text="|Hotel search - ${hotel.name}|"></a>
+        <i class="right angle icon divider"></i>
+        <div class="active section" th:text="|Available rooms(${rooms.getTotalElements()})"></div>
+    </div>
+    <div class="ui info message" th:if="${rooms.getTotalElements() == 0}">
+        Sorry, this hotel has no available rooms.
+    </div>
+</div>
+
+
+</body>
+</html>

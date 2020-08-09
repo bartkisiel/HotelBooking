@@ -127,7 +127,7 @@ class HotelSearchingControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    @Test
+    /*@Test
     @DisplayName("should return available rooms for the hotel with correct id given.")
     public void getAvailableHotelRooms_in_hotelWithAvailableRooms() throws Exception {
         //given
@@ -156,5 +156,5 @@ class HotelSearchingControllerTest {
 
         verify(hotelRepository, times(1)).findById(eq(hotel.getId()));
     }
-
+*/
 }

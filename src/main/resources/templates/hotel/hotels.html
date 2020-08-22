@@ -20,7 +20,7 @@
         0 hotels found - <a th:href="@{/}">Search again</a>
     </div>
 
-    <div th:unless="${hotels.getTotalElements() == 0">
+    <div th:unless="${hotels.getTotalElements() == 0}">
         <h3 class="ui-dividing-header margin-top-20" th:text="|Results (${hotels.getTotalElements()})|"></h3>
         <table class="ui-sortable-celled-table" th:with="qstring=${#request.getQueryString())},
         fieldSorterAsc=${#qs.fieldSorterAsc(qstring)},
@@ -117,19 +117,43 @@
                     </a>
 
                     <a class="icon item"
-                    th:if=
+                    th:if="${hotels.getPageable().hasPrevious()}"
+                    th:with="newQueryString=${#qs.decrementPage(qstring)}"
+                    th:href="${urlBuilder.apply(newQueryString)}"
+                    th:title="|Previous page - (page ${#qs.getPageNumber(newQueryString)})|">
+                       <i class="left chevron icon"></i>
+                    </a>
+                    <a class="icon item"
+                    th:unless="${isOnLastPage}"
+                    th:with="newQueryString=${#qs.incrementPage(qstring, lastPage)}"
+                    th:href="${urlBuilder.apply(newQueryString)}"
+                    th:title="|Next page - (page ${#qs.getPageNumber(newQueryString)})|">
+                        <i class="right chevron icon"></i>
+                    </a>
+                    <a class="icon item"
+                    th:unless="${isOnLastPage}"
+                    th:with="newQueryString=${#qs.setPageNumber(qstring, lastPage)}"
+                    th:href="${urlBuilder.apply(newQueryString)}"
+                    th:title="|Go to the last page - (page ${lastPage})|">
+                        <i class="angle double right icon"></i>
+                    </a>
                 </div>
             </th>
         </tr>
                 </tfoot>
-                    
-        </tr>
-    </thead>
-    </table>
+        </table>
     </div>
-
-
 </div>
+    <th:block layout:fragment="script">
+        <script>
+            function onSortChange(url) {
+            window.location = url;
+            }
+        </script>
+    </th:block>
+
+
+
 
 
 </body>

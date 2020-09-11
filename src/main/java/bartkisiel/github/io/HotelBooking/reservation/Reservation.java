@@ -134,7 +134,7 @@ public class Reservation {
         }
     }
 
-    private boolean roomIsFull() {
+    public boolean roomIsFull() {
         return guests.size() >= room.getBeds();
     }
 

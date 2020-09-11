@@ -22,6 +22,10 @@ public class ReservationFlow {
         stepDescriptionList.add(new StepDescription(5, "Payment", "Provide payment details"));
     }
 
+    public Set<Step> getFinishedSteps() {
+        return finishedSteps;
+    }
+
     public Reservation getReservation() {
         return reservation;
     }
